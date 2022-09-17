@@ -76,42 +76,6 @@ jobs:
       with:
         file: build/coverage/coverage.info
 
-  sanitize:
-    needs: [lint]
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Python
-      uses: actions/setup-python@v2
-      with: { python-version: "3.8" }
-
-    - name: Install dependencies
-      run: pip3 install "conan<2,!=1.49.0"
-        && conan profile new default --detect
-        && cp .github/clang-12.profile ~/.conan/profiles/default
-        && conan install . -b missing
-
-    - name: Configure
-      env: { CXX: clang++-12 }
-      run: cmake --preset=ci-sanitize
-
-    - name: Build
-      run: cmake --build build/sanitize -j 2
-
-    - name: Test
-      working-directory: build/sanitize
-      env:
-        ASAN_OPTIONS: "strict_string_checks=1:\
-          detect_stack_use_after_return=1:\
-          check_initialization_order=1:\
-          strict_init_order=1:\
-          detect_leaks=1"
-        UBSAN_OPTIONS: print_stacktrace=1
-      run: ctest --output-on-failure -j 2
-
   test:
     needs: [lint]
 
