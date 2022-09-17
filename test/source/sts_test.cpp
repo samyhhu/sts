@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "lib.hpp"
 
 TEST(Test, Basic)
