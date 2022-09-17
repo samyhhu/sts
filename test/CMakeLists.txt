@@ -6,20 +6,21 @@ project(stsTests LANGUAGES CXX)
 
 # ---- Dependencies ----
 
-find_package(Catch2 REQUIRED)
-include(Catch)
+find_package(GTest REQUIRED)
 
+include(GoogleTest)
+include_directories(${CMAKE_INCLUDE_PATH})
 # ---- Tests ----
 
 add_executable(sts_test source/sts_test.cpp)
 target_link_libraries(
-    sts_test PRIVATE
+    sts_test PUBLIC
     sts_lib
-    Catch2::Catch2WithMain
+    GTest::gtest
+    GTest::gtest_main
 )
 target_compile_features(sts_test PRIVATE cxx_std_20)
-
-catch_discover_tests(sts_test)
+gtest_discover_tests(sts_test)
 
 # ---- End-of-file commands ----
 

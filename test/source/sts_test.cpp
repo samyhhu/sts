@@ -1,9 +1,8 @@
-#include <catch2/catch_test_macros.hpp>
-
+#include <gtest/gtest.h>
 #include "lib.hpp"
 
-TEST_CASE("Name is sts", "[library]")
+TEST(Test, Basic)
 {
   auto const lib = library {};
-  REQUIRE(lib.name == "sts");
+  EXPECT_EQ(lib.name, "sts");
 }
