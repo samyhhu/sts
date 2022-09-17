@@ -71,7 +71,7 @@ jobs:
 
     - name: Test
       working-directory: build
-      run: ctest --output-on-failure -C Release --test-dir build -j 2
+      run: ctest --output-on-failure -C Release -j 2
 
   docs:
     # Deploy docs only when builds succeed
