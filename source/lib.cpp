@@ -2,7 +2,4 @@
 
 #include <fmt/core.h>
 
-library::library()
-    : name {fmt::format("{}", "sts")}
-{
-}
+library::library() : name{fmt::format("{}", "sts")} {}

@@ -1,12 +1,7 @@
-#include <iostream>
-#include <string>
+#include "common/logger.hpp"
 
-#include "lib.hpp"
-
-int main()
-{
-  auto const lib = library {};
-  auto const message = "Hello from " + lib.name + "!";
-  std::cout << message << '\n';
+int main() {
+  LOG_INFO("test");
+  LOG_DEBUG("testing debug");
   return 0;
 }
