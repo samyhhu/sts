@@ -5,6 +5,7 @@ build/
 cmake/open-cpp-coverage.cmake
 cmake-build-*/
 conan/
+logs/
 prefix/
 CMakeLists.txt.user
 CMakeUserPresets.json

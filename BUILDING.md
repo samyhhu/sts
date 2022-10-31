@@ -3,6 +3,11 @@
 ## Dependencies
 
 For a list of dependencies, please refer to [conanfile.py](conanfile.py).
+```sh
+conan profile new default --detect
+conan profile update settings.compiler.libcxx=libstdc++11 default
+conan install . -b missing
+```
 
 ## Build
 
@@ -24,18 +29,6 @@ generator, like the Visual Studio ones:
 cmake -S . -B build
 cmake --build build --config Release
 ```
-
-### Building with MSVC
-
-Note that MSVC by default is not standards compliant and you need to pass some
-flags to make it behave properly. See the `flags-windows` preset in the
-[CMakePresets.json](CMakePresets.json) file for the flags and with what
-variable to provide them to CMake during configuration.
-
-### Building on Apple Silicon
-
-CMake supports building on Apple Silicon properly since 3.20.1. Make sure you
-have the [latest version][1] installed.
 
 ## Install
 

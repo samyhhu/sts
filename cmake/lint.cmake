@@ -10,10 +10,11 @@ default(FORMAT_COMMAND clang-format)
 default(
     PATTERNS
     source/*.cpp source/*.hpp
+    source/*/*.cpp source/*/*.hpp
     include/*.hpp
     test/*.cpp test/*.hpp
 )
-default(FIX NO)
+default(FIX YES)
 
 set(flag --output-replacements-xml)
 set(args OUTPUT_VARIABLE output)

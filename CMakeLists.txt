@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.14)
 
+# for clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_FRAMEWORK_PATH ${CMAKE_SOURCE_DIR}/conan)
+
 include(cmake/prelude.cmake)
 
 project(
@@ -29,6 +33,7 @@ target_include_directories(
 target_compile_features(sts_lib PUBLIC cxx_std_20)
 
 find_package(fmt REQUIRED)
+find_package(spdlog REQUIRED)
 target_link_libraries(sts_lib PRIVATE fmt::fmt)
 
 # ---- Declare executable ----
@@ -44,7 +49,7 @@ set_target_properties(
 
 target_compile_features(sts_exe PRIVATE cxx_std_20)
 
-target_link_libraries(sts_exe PRIVATE sts_lib)
+target_link_libraries(sts_exe PRIVATE sts_lib spdlog::spdlog)
 
 # ---- Install rules ----
 
